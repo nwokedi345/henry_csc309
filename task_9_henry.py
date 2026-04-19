@@ -32,7 +32,7 @@ st.markdown("""
     .panel-cat { background: #161b22; border: 1px solid #d2a8ff; padding: 25px; border-radius: 8px; text-align: center; box-shadow: 0 0 15px rgba(210, 168, 255, 0.2);}
     .panel-none { background: #161b22; border: 1px solid #ff7b72; padding: 25px; border-radius: 8px; text-align: center; box-shadow: 0 0 15px rgba(255, 123, 114, 0.2);}
     
-    .lbl-title { font-size: 2rem; color: #ffffff; font-weight: bold; font-family: 'Courier New', monospace; letter-spacing: 2px;}
+    .lbl-title { font-size: 2.2rem; color: #ffffff; font-weight: bold; font-family: 'Courier New', monospace; letter-spacing: 2px;}
     .lbl-text { font-size: 1.2rem; color: #c9d1d9; margin-top: 10px;}
     .highlight { color: #00ffcc; font-weight: bold; }
     </style>
@@ -60,7 +60,7 @@ def load_ai_engine():
 # --- 4. HENRY'S DASHBOARD ---
 st.markdown("""
 <div class="cyber-box">
-    <h1>[:: Image Classifier ::]</h1>
+    <h1>[::  IMAGE CLASSIFIER DOG vs CAT ::]</h1>
     <p>SYSTEM ARCHITECT: OTUONYE TOBECHUKWU HENRY | REG: 20231371822 | MODULE: CSC 309</p>
 </div>
 """, unsafe_allow_html=True)
@@ -102,25 +102,26 @@ if uploaded_file is not None:
 
             st.markdown("<br>", unsafe_allow_html=True)
             
+            # --- UPDATED RESULT CARDS ---
             if 151 <= cid <= 268: # Dog
                 st.markdown(f"""
                 <div class="panel-dog">
-                    <div class="lbl-title">TARGET MATCH: DOG</div>
-                    <div class="lbl-text">SUB-SPECIES: <span class="highlight">{label}</span> | PROBABILITY: <span class="highlight">{conf:.1f}%</span></div>
+                    <div class="lbl-title">DOG DETECTED 🐶</div>
+                    <div class="lbl-text">BREED: <span class="highlight">{label}</span> | CONFIDENCE: <span class="highlight">{conf:.1f}%</span></div>
                 </div>
                 """, unsafe_allow_html=True)
             elif 281 <= cid <= 285: # Cat
                 st.markdown(f"""
                 <div class="panel-cat">
-                    <div class="lbl-title">TARGET MATCH: CAT</div>
-                    <div class="lbl-text">SUB-SPECIES: <span class="highlight">{label}</span> | PROBABILITY: <span class="highlight">{conf:.1f}%</span></div>
+                    <div class="lbl-title">CAT DETECTED 🐱</div>
+                    <div class="lbl-text">BREED: <span class="highlight">{label}</span> | CONFIDENCE: <span class="highlight">{conf:.1f}%</span></div>
                 </div>
                 """, unsafe_allow_html=True)
             else: # Unknown
                 st.markdown(f"""
                 <div class="panel-none">
-                    <div class="lbl-title">ANOMALY DETECTED</div>
-                    <div class="lbl-text">PREDICTION: <span class="highlight">{label}</span> | PROBABILITY: <span class="highlight">{conf:.1f}%</span></div>
+                    <div class="lbl-title">UNKNOWN ENTITY ❌</div>
+                    <div class="lbl-text">PREDICTION: <span class="highlight">{label}</span> | CONFIDENCE: <span class="highlight">{conf:.1f}%</span></div>
                 </div>
                 """, unsafe_allow_html=True)
 else:
